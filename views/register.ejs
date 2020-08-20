@@ -8,14 +8,38 @@
     <title>Register</title>
 </head>
 <body>
-    <h1>Register</h1>
+	<h1>Register</h1>
+	
+	<ul>
+		<% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+		<li><%= error.message %></li>
+		<% }) %> <% } %>
+	</ul>
+
     <form action="/users/register" method="POST">
 		<div>
 			<input 
 				type="text" 
-				id="name" 
-				name="name" 
-				placeholder="Name" 
+				id="firstName" 
+				name="_firstName" 
+				placeholder="First name" 
+				required 
+			/>
+		</div>
+		<div>
+			<input 
+				type="text" 
+				id="lastName" 
+				name="_lastName" 
+				placeholder="Last name" 
+				required 
+			/>
+		</div>
+		<div>
+			<input 
+				type="date" 
+				id="birthDate" 
+				name="_birthDate"
 				required 
 			/>
 		</div>
@@ -23,17 +47,8 @@
 			<input
 				type="email"
 				id="email"
-				name="email"
+				name="_email"
 				placeholder="Email"
-				required
-			/>
-		</div>
-		<div>
-			<input
-				type="email"
-				id="email2"
-				name="email2"
-				placeholder="Confirm Email"
 				required
 			/>
 		</div>
@@ -41,7 +56,7 @@
 			<input
 				type="password"
 				id="password"
-				name="password"
+				name="_password"
 				placeholder="Password"
 				required
 			>
@@ -50,7 +65,7 @@
 			<input
 				type="password"
 				id="password2"
-				name="password2"
+				name="_password2"
 				placeholder="Confirm Password"
 				required
 			/>

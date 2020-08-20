@@ -1,0 +1,12 @@
+POST http://192.168.1.11/users/register HTTP/1.1
+content-type: application/json
+
+{
+	"firstName": "Pesho",
+	"lastName": "Peshov",
+	"birthDate": "2000-01-01",
+	"email": "asd@asd",
+	"email2": "asd@asd",
+	"password": "12345678",
+	"password2": "12345678"
+}
