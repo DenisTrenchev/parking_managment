@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 		if(await users.findOne({attributes: ['email'], where: {email: _email}})){
 			console.log("tuk");
 			errors.push({message: "Email already registered"})
-			res.render('register', errors);
+			res.render('register', {errors});
 			//return res.render("register", {message: "Email already registered"});
 		}else{
 			await users.build({
