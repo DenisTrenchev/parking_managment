@@ -6,11 +6,11 @@ const bcrypt = require('bcrypt');
 const { Connection } = require('pg');
 const users = require('../models/users');
 
-router.get('/', (req, res) =>{
+router.get('/', checkAuthenticated, (req, res) =>{
 	res.render('register.ejs');
 });
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
 	let {_firstName, _lastName, _birthDate, _email, _password, _password2} = req.body;
 	let errors = [];
 
@@ -42,10 +42,8 @@ router.post("/", async (req, res) => {
 		console.log(hashedPassword);
 
 		if(await users.findOne({attributes: ['email'], where: {email: _email}})){
-			console.log("tuk");
-			errors.push({message: "Email already registered"})
+			errors.push({message: "Email already registered"});
 			res.render('register', {errors});
-			//return res.render("register", {message: "Email already registered"});
 		}else{
 			await users.build({
 				firstName: _firstName, 
@@ -61,5 +59,12 @@ router.post("/", async (req, res) => {
 		}
 	}
 });
+
+function checkAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) {
+		return res.redirect("/users/dashboard");
+	}
+	next();
+}
 
 module.exports = router;
