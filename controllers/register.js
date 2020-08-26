@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 
 const { Connection } = require('pg');
-const users = require('../models/users');
+const db = require('../models');
 
 router.get('/', checkAuthenticated, (req, res) =>{
 	res.render('register.ejs');
@@ -41,11 +41,11 @@ router.post('/', async (req, res) => {
 		hashedPassword = await bcrypt.hash(_password, 10);
 		console.log(hashedPassword);
 
-		if(await users.findOne({attributes: ['email'], where: {email: _email}})){
+		if(await db.User.findOne({attributes: ['email'], where: {email: _email}})){
 			errors.push({message: "Email already registered"});
 			res.render('register', {errors});
 		}else{
-			await users.build({
+			await db.User.build({
 				firstName: _firstName, 
 				lastName: _lastName, 
 				birthDate: _birthDate,

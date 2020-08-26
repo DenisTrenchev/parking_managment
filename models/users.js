@@ -1,34 +1,39 @@
-const sequelize = require('sequelize');
-const db = require('../config/database');
+module.exports = (sequelize, DataTypes) =>{
+	const User = sequelize.define('User',{
+		firstName: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		lastName: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		birthDate: {
+			type: DataTypes.DATE,
+			allowNull: false
+		},
+		email: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			unique: true
+		},
+		password: {
+			type: DataTypes.STRING,
+			allowNull: false
+		}
+	}, {
+		tableName: 'Users'
+	});
 
-const User = db.define('User',{
-	firstName: {
-		type: sequelize.STRING,
-		allowNull: false
-	},
-	lastName: {
-		type: sequelize.STRING,
-		allowNull: false
-	},
-	birthDate: {
-		type: sequelize.DATE,
-		allowNull: false
-	},
-	email: {
-		type: sequelize.STRING,
-		allowNull: false,
-		unique: true
-	},
-	password: {
-		type: sequelize.STRING,
-		allowNull: false
-	},
-	role: {
-		type: sequelize.INTEGER,
-		allowNull: false
+	User.associate = models => {
+		User.belongsTo(models.User_Role, {
+			foreignKey:{
+				name: 'userRole'
+			}
+		});
 	}
-}, {
-	tableName: 'Users'
-});
 
-module.exports = User;
+	return User;
+}
+
+

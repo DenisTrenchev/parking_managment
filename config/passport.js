@@ -1,5 +1,5 @@
 const localStrategy = require("passport-local").Strategy;
-const users = require('../models/users');
+const db = require('../models');
 const bcrypt = require("bcrypt");
 
 function initialize(passport){
@@ -9,7 +9,7 @@ function initialize(passport){
 		console.log(email, password);
 
 		var User;
-		if(User = await users.findOne({where: {email: email}})){
+		if(User = await db.User.findOne({where: {email: email}})){
 			//console.log(User.password);
 			bcrypt.compare(password, User.password, (err, isMatch) => {
 				if (err) {
@@ -37,8 +37,8 @@ function initialize(passport){
 	});
 
 	passport.deserializeUser(async (id, done) => {
-		await users.findOne({where: {id: id}});
-		return done(null, users);
+		await db.User.findOne({where: {id: id}});
+		return done(null, db.User);
 	});
 };
 module.exports = initialize;

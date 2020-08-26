@@ -1,6 +1,6 @@
-const db = require('./config/database');
+const db = require('./models');
 
-db.authenticate().then(() => {
+db.sequelize.sync({force: true}).then(() => {
 	//require('./models/users').sync({force: true});
 	// require('./models/users').build({
 	// 	firstName: "Pesho", 

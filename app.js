@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const passport = require("passport");
 
-const db = require('./config/database');
+const db = require('./models');
 const initializePassport = require('./config/passport');
 
 const home = require('./controllers/home');
@@ -44,7 +44,7 @@ app.use('/users/register', register);
 app.use('/users/dashboard', dashboard);
 
 //DB test
-db.authenticate()
+db.sequelize.authenticate()
 	.then(() => console.log('Database connected...'))
 	.catch(err => console.log('Error: ' + err))
 
