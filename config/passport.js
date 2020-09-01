@@ -6,11 +6,10 @@ function initialize(passport){
 	console.log("Initialized");
 
 	const authenticateUser = async (email, password, done) => {
-		console.log(email, password);
+		//console.log(email, password);
 
 		var User;
 		if(User = await db.User.findOne({where: {email: email}})){
-			//console.log(User.password);
 			bcrypt.compare(password, User.password, (err, isMatch) => {
 				if (err) {
 					console.log(err);

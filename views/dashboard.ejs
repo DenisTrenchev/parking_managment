@@ -10,7 +10,56 @@
 </head>
 <body>
 	<h1>Dashboard</h1>
+	
+	<ul>
+		<% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+		<li><%= error.message %></li>
+		<% }) %> <% } %>
+	</ul>
+	
+	<ul>
+		<% if(messages.success_msg) { %>
+		<li><%= messages.success_msg %></li>
+		<% } %>
+	</ul>
 
-    <a href="/users/logout">Logout</a>
+	<ul>
+		<% if (messages.error) { %>
+		<li><%= messages.error %></li>
+		<% } %>
+	</ul>
+	<a href="/users/logout">Logout</a>
+	<form action="/users/dashboard" method="POST">
+		<div>
+			<input
+				type="text"
+				id="parkingName"
+				name="_parkingName"
+				placeholder="Parking name"
+			/>
+		</div>
+		<div>
+			<input
+				type="text"
+				id="parkingAddress"
+				name="_parkingAddress"
+				placeholder="Parking address"
+			/>
+		</div>
+		<div>
+			<input
+				type="text"
+				id="parkingSpaceCount"
+				name="_parkingSpaceCount"
+				placeholder="Spaces count"
+			/>
+		</div>
+		<div>
+			<input 
+				type="submit" 
+				value="Create" 
+			/>
+		</div>
+	</form>
 </body>
 </html>

@@ -50,8 +50,7 @@ router.post('/', async (req, res) => {
 				lastName: _lastName, 
 				birthDate: _birthDate,
 				email: _email,
-				password: hashedPassword,
-				role: "1"
+				password: hashedPassword
 			}).save();
 			
 			res.status(200);

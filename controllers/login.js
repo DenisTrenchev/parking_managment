@@ -16,6 +16,7 @@ router.post('/',
 );
 
 function checkAuthenticated(req, res, next) {
+	//console.log('tuk: ' + req);
 	if (req.isAuthenticated()) {
 		return res.redirect("/users/dashboard");
 	}

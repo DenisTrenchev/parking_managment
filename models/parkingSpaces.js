@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) =>{
 		Parking_Space.belongsTo(models.Parking_Space_Type, {
 			foreignKey:{
 				name: 'parkingSpaceTypeID',
-				allowNull: false
+				//allowNull: false
 			}
 		});
 		Parking_Space.belongsTo(models.User, {
