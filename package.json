@@ -5,7 +5,7 @@
 	"main": "app.js",
 	"scripts": {
 		"start": "node index",
-		"dev": "nodemon index"
+		"dev": "nodemon index --ignore sessions/"
 	},
 	"author": "Denis Trenchev",
 	"license": "ISC",
@@ -21,7 +21,8 @@
 		"passport-local": "^1.0.0",
 		"pg": "^8.3.0",
 		"pg-hstore": "^2.3.3",
-		"sequelize": "^6.3.3"
+		"sequelize": "^6.3.3",
+		"session-file-store": "^1.4.0"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.4",

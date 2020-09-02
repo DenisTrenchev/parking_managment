@@ -28,7 +28,7 @@ async function test(){
 		}).save();
 	}
 };
-test();
+//test();
 
 //Insert parking space types
 // db.Parking_Space_Type.bulkCreate([
@@ -42,3 +42,25 @@ test();
 // 		name: 'Motorcycle'
 // 	}
 // ]);
+
+//Insert user roles
+db.User_Role.bulkCreate([
+	{
+		name: 'user'
+	},
+	{
+		name: 'parking-owner'
+	},
+	{
+		name: 'admin'
+	}
+]);
+
+async function test2(){
+	let parking = await db.Parking.findOne({where: {name: 'parking3'}});
+	let ps = await db.Parking_Space.findAll({where: {parkingID: parking.id}});
+
+	console.log(ps);
+	
+};
+//test2();

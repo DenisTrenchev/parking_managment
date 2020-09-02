@@ -2,8 +2,9 @@ const express = require('express');
 const db = require('../models');
 const router = express.Router();
 const { Connection } = require('pg');
+const helpers = require('../helpers/util');
 
-router.get('/', checkNotAuthenticated, (req, res) =>{
+router.get('/', helpers.checkNotAuthenticated, (req, res) =>{
 	res.render('dashboard');
 });
 
@@ -21,7 +22,7 @@ router.post('/', async (req, res) => {
 		res.render('dashboard', {errors, _parkingName, _parkingAddress, _parkingSpaceCount});
 	}else{
 		if(await db.Parking.findOne({where: {name: _parkingName}})){
-			errors.push({message: "Parking name already exists!"});
+			errors.push({message: "Parking already exists!"});
 			res.render('dashboard', {errors});
 		}else{
 			await db.Parking.build({
@@ -40,16 +41,9 @@ router.post('/', async (req, res) => {
 			};
 			console.log("Parking created!");
 			res.status(200);
-			res.redirect("/users/dashboard");
+			res.redirect("/users/viewParking");
 		}
 	}
 });
-
-function checkNotAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) {
-		return next();
-	}
-	res.redirect("/users/login");
-}
 
 module.exports = router;

@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
 const bcrypt = require('bcrypt');
-
 const { Connection } = require('pg');
 const db = require('../models');
+const helpers = require('../helpers/util');
 
-router.get('/', checkAuthenticated, (req, res) =>{
+router.get('/', helpers.checkAuthenticated, (req, res) =>{
 	res.render('register.ejs');
 });
 
@@ -50,7 +49,8 @@ router.post('/', async (req, res) => {
 				lastName: _lastName, 
 				birthDate: _birthDate,
 				email: _email,
-				password: hashedPassword
+				password: hashedPassword,
+				userRole: '1'
 			}).save();
 			
 			res.status(200);
@@ -58,12 +58,5 @@ router.post('/', async (req, res) => {
 		}
 	}
 });
-
-function checkAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) {
-		return res.redirect("/users/dashboard");
-	}
-	next();
-}
 
 module.exports = router;

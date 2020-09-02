@@ -7,6 +7,7 @@ const flash = require("express-flash");
 const bodyParser = require('body-parser');
 const path = require('path');
 const passport = require("passport");
+//const FileStore = require("session-file-store")(session);
 
 const db = require('./models');
 const initializePassport = require('./config/passport');
@@ -16,16 +17,16 @@ const login = require('./controllers/login');
 const logout = require('./controllers/logout');
 const register = require('./controllers/register');
 const dashboard = require('./controllers/dashboard');
+const viewParking = require('./controllers/viewParking');
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
 
-app.use(
-	session({
-		secret: 'secret',
-		resave: false,
-		saveUninitialized: false
-	})
-);
+app.use(session({
+	//store: new FileStore(),
+	secret: "secret",
+	resave: false,
+	saveUninitialized: true
+}));
 
 app.use(bodyParser.json());
 app.use(passport.initialize());
@@ -42,6 +43,7 @@ app.use('/users/login', login);
 app.use('/users/logout', logout);
 app.use('/users/register', register);
 app.use('/users/dashboard', dashboard);
+app.use('/users/viewPArking', viewParking);
 
 //DB test
 db.sequelize.authenticate()
