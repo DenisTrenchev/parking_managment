@@ -6,22 +6,21 @@ const db = require('../models');
 const helpers = require('../helpers/util');
 
 router.get('/', helpers.checkAuthenticated, (req, res) =>{
-	res.render('register');
+	res.render('registerPO');
 });
 
 router.post('/', async (req, res) => {
-	let {_firstName, _lastName, _email, _password, _password2} = req.body;
+	let {_firstName, _email, _password, _password2} = req.body;
 	let errors = [];
 
 	// console.log({
 	// 	_firstName,
-	// 	_lastName,
 	// 	_email,
 	// 	_password,
 	// 	_password2
 	// });
 
-	if(!_firstName || !_lastName || !_email || !_password || !_password2){
+	if(!_firstName || !_email || !_password || !_password2){
 		errors.push({message: "Please enter all fields!"});
 	}
 
@@ -34,21 +33,20 @@ router.post('/', async (req, res) => {
 	}
 
 	if(errors.length > 0){
-		res.render("register", {errors, _firstName, _lastName, _email, _password, _password2});
+		res.render("registerPO", {errors, _birthDate, _email, _password, _password2});
 	}else{
 		hashedPassword = await bcrypt.hash(_password, 10);
 		//console.log(hashedPassword);
 
 		if(await db.User.findOne({attributes: ['email'], where: {email: _email}})){
 			errors.push({message: "Email already registered"});
-			res.render('register', {errors});
+			res.render('registerPO', {errors});
 		}else{
 			await db.User.build({
-				firstName: _firstName, 
-				lastName: _lastName,
+				firstName: _firstName,
 				email: _email,
 				password: hashedPassword,
-				userRole: '1'
+				userRole: '2'
 			}).save();
 			
 			res.status(200);

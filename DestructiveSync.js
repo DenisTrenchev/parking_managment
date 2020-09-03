@@ -31,17 +31,17 @@ async function test(){
 //test();
 
 //Insert parking space types
-// db.Parking_Space_Type.bulkCreate([
-// 	{
-// 		name: 'Car'
-// 	},
-// 	{
-// 		name: 'Bus'
-// 	},
-// 	{
-// 		name: 'Motorcycle'
-// 	}
-// ]);
+db.Parking_Space_Type.bulkCreate([
+	{
+		name: 'Car'
+	},
+	{
+		name: 'Bus'
+	},
+	{
+		name: 'Motorcycle'
+	}
+]);
 
 //Insert user roles
 db.User_Role.bulkCreate([

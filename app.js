@@ -16,7 +16,9 @@ const home = require('./controllers/home');
 const login = require('./controllers/login');
 const logout = require('./controllers/logout');
 const register = require('./controllers/register');
+const registerPO = require('./controllers/registerPO');
 const dashboard = require('./controllers/dashboard');
+const dashboardPO = require('./controllers/dashboardPO');
 const viewParking = require('./controllers/viewParking');
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
@@ -42,7 +44,9 @@ app.use('/', home);
 app.use('/users/login', login);
 app.use('/users/logout', logout);
 app.use('/users/register', register);
+app.use('/users/registerPO', registerPO);
 app.use('/users/dashboard', dashboard);
+app.use('/users/dashboardPO', dashboardPO);
 app.use('/users/viewPArking', viewParking);
 
 //DB test
