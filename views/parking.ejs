@@ -6,25 +6,34 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard</title>
+    <title>Parking</title>
 </head>
 <body>
-	<h1>Dashboard</h1>
+	<h1>Parking</h1>
 	<div>
 		<a href="/users/logout">Logout</a>
 	</div>
 	
 	<div>
 		<form action="/users/dashboard/parking" method="POST">
-			<select name='_selectedParking'>
-				<% parkings.forEach(element => {%>
+			<!-- <select name='_selectedParking'>
+				<% parking_spaces.forEach(element => {%>
 					<option value="<%= element.id %>"> <%= element.name %></option>
 				<% }) %>
 			</select>
 			<input 
 				type="submit" 
 				value="Select" 
-			/>
+			/> -->
+			<% parking_spaces.forEach(element => {%>
+				<div value="<%= element.id %>"> 
+					<%= element.spaceNumber %>
+					<input 
+						type="submit" 
+						value="Reserve" 
+					/>
+				</div>
+			<% }) %>
 		</form>
 	</div>
 </body>

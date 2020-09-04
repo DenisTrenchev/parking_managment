@@ -20,6 +20,7 @@ const registerPO = require('./controllers/registerPO');
 const dashboard = require('./controllers/dashboard');
 const dashboardPO = require('./controllers/dashboardPO');
 const viewParking = require('./controllers/viewParking');
+const parking = require('./controllers/parking');
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
 
@@ -48,6 +49,7 @@ app.use('/users/registerPO', registerPO);
 app.use('/users/dashboard', dashboard);
 app.use('/users/dashboardPO', dashboardPO);
 app.use('/users/viewPArking', viewParking);
+app.use('/users/dashboard/parking', parking);
 
 //DB test
 db.sequelize.authenticate()

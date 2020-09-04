@@ -5,12 +5,20 @@ const { Connection } = require('pg');
 const helpers = require('../helpers/util');
 
 router.get('/', /*helpers.checkNotAuthenticated,*/ async (req, res) =>{
-	//var parking = await db.Parking.findOne({where: {name: req.params._parkingName}});
-	//await db.Parking_Space.findAll({where: {parkingID: parking.id}});
-	// console.log(req.body);
-	// res.render('viewParking', {
-	// 	test: test
-	// });
+	// parking_spaces = await db.Parking_Space.findAll({where: {}});
+
+	// res.render('dparking',{
+	// 	parkings: parkings
+	// })
+	console.log(req.body);
+	res.render('parking',{
+		parking_spaces: req.body
+	})
+	
+});
+
+router.post('/', async (req, res) =>{
+	
 });
 
 module.exports = router;
