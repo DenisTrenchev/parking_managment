@@ -49,7 +49,7 @@ app.use('/users/registerPO', registerPO);
 app.use('/users/dashboard', dashboard);
 app.use('/users/dashboardPO', dashboardPO);
 app.use('/users/viewPArking', viewParking);
-app.use('/users/dashboard/parking', parking);
+app.use('/users/parking', parking);
 
 //DB test
 db.sequelize.authenticate()

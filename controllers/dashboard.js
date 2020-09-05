@@ -13,7 +13,7 @@ router.get('/', /*helpers.checkNotAuthenticated,*/ async (req, res) =>{
 	
 });
 
-router.post('/parking', async (req, res) => {
+router.post('/', async (req, res) => {
 	let {_selectedParking} = req.body;
 	parking_spaces = await db.Parking_Space.findAll({where: {parkingID: _selectedParking}});
 

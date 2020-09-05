@@ -15,7 +15,7 @@
 	</div>
 	
 	<div>
-		<form action="/users/dashboard/parking" method="POST">
+		<form action="/users/parking" method="GET">
 			<select name='_selectedParking'>
 				<% parkings.forEach(element => {%>
 					<option value="<%= element.id %>"> <%= element.name %></option>
