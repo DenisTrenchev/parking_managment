@@ -4,8 +4,7 @@ const PORT = process.env.PORT || 80;
 const session = require("express-session");
 const flash = require("express-flash");
 
-const bodyParser = require('body-parser');
-const path = require('path');
+//const path = require('path');
 const passport = require("passport");
 //const FileStore = require("session-file-store")(session);
 
@@ -31,7 +30,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
