@@ -13,16 +13,14 @@ router.get('/check', (req, res) =>{
 	res.send(req.user);
 });
 
-// router.post('/', 
-// 	passport.authenticate("local", {
-// 		successRedirect: "/users/dashboard",
-// 		failureRedirect: "/users/login",
-// 		failureFlash: true
-// 	})
-// );
-
-router.post('/', async (req, res) =>{
-	passport.authenticate("local", async function(err, user, info){
+router.post('/', 
+	passport.authenticate("local", {
+			failureRedirect: "/users/login",
+			failureFlash: true
+		})
+	,async (req, res) =>{
+	passport.authenticate("local",
+		async function(err, user, info){
 		if(err){
 			return next(err);
 		}
