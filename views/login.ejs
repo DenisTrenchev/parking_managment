@@ -37,7 +37,7 @@
 						aria-expanded="false"
 					>Register</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/users/register">Register</a>
+						<a class="dropdown-item" href="/users/register">Register user</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/users/registerPO">Register parking</a>
 					</div>
@@ -45,24 +45,6 @@
 			</ul>
 		</div>
 	</nav>
-
-	<ul>
-		<% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
-		<li><%= error.message %></li>
-		<% }) %> <% } %>
-	</ul>
-	
-	<ul>
-		<% if(messages.success_msg) { %>
-		<li><%= messages.success_msg %></li>
-		<% } %>
-	</ul>
-
-	<ul>
-		<% if (messages.error) { %>
-		<li><%= messages.error %></li>
-		<% } %>
-	</ul>
 
 	<div class="container">
 		<div class="row">
@@ -107,5 +89,23 @@
 			</div>
 		</div>
 	</div>
+	
+	<ul>
+		<% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+		<li><%= error.message %></li>
+		<% }) %> <% } %>
+	</ul>
+	
+	<ul>
+		<% if(messages.success_msg) { %>
+		<li><%= messages.success_msg %></li>
+		<% } %>
+	</ul>
+
+	<ul>
+		<% if (messages.error) { %>
+		<li><%= messages.error %></li>
+		<% } %>
+	</ul>
 </body>
 </html>

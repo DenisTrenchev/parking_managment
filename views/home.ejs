@@ -40,7 +40,7 @@
 						aria-expanded="false"
 					>Register</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/users/register">Register</a>
+						<a class="dropdown-item" href="/users/register">Register user</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/users/registerPO">Register parking</a>
 					</div>
@@ -48,13 +48,18 @@
 			</ul>
 			</div>
 	</nav>
-
-    <% if (typeof message !== 'undefined' ) { %>
-		<div class="card mx-auto" style="width: 18rem;">
-			<div class="card-body">
-				<p><%= message %></p>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+				<% if (typeof message !== 'undefined' ) { %>
+					<div class="card card-signin my-5">
+						<div class="card-body">
+							<p class="text-center"><%= message %></p>
+						</div>
+					</div>
+				<% } %>
 			</div>
 		</div>
-    <% } %>
+	</div>
 </body>
 </html>
