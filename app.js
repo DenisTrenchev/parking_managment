@@ -38,7 +38,7 @@ app.use(flash());
 initializePassport(passport);
 
 app.use(express.urlencoded({extended: false}));
-
+app.use('/public', express.static('public'));
 app.use('/home', home);
 app.use('/', home);
 app.use('/users/login', login);

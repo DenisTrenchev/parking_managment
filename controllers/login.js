@@ -23,12 +23,10 @@ router.get('/check', (req, res) =>{
 
 router.post('/', async (req, res) =>{
 	passport.authenticate("local", async function(err, user, info){
-		//let userRole = await db.User_Role.findOne({where: {name: 'user'}})
 		if(err){
 			return next(err);
 		}
 		if(!user){
-			//res.status(401).json(info);
 			res.redirect("/users/login");
 		}else{
 			req.logIn(user, function(){
