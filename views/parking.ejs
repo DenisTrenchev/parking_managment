@@ -44,11 +44,27 @@
 					<div class="card-body">
 						<form action="/users/parking" method="POST">
 							<h5 class="card-title text-center">Select parking space/spaces</h5>
-							<select name="parking_spaces" id="parking_spaces" class="custom-select js-example-basic-multiple" multiple>
+							<!-- <select name="parking_spaces" id="parking_spaces" class="custom-select js-example-basic-multiple" multiple>
 								<% parking_spaces.forEach(element => {%>
 									<option value="<%= element.id %>"> <%= element.spaceNumber %> </option>
 								<% }) %>
-							</select>
+							</select> -->
+							<% parking_spaces.forEach(element => {%>
+								<div class="alert alert-info" role="alert">
+									<strong>Parking space: </strong>
+									<label><%= element.spaceNumber %></label>
+									<div class="form-check form-check-inline">
+										<input 
+											class="form-check-input pull-right" 
+											type="checkbox" 
+											id="inlineCheckbox1" 
+											value="<%= element.id %>" 
+											id="defaultCheck1"
+											name="parking_spaces">
+									</div>
+								</div>
+							<% }) %>
+							
 							<hr class="my-4">
 							<input 
 								class="btn btn-lg btn-primary btn-block text-uppercase"
@@ -60,9 +76,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div>
-		
 	</div>
 </body>
 </html>
