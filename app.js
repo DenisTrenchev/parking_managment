@@ -23,6 +23,7 @@ const parking = require('./controllers/parking');
 const selectParking = require('./controllers/selectParking');
 const registerCar = require('./controllers/registerCar');
 const assignCarToSpace = require('./controllers/assignCarToSpace');
+const viewCars = require('./controllers/viewCars'); 
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
 
@@ -55,6 +56,7 @@ app.use('/users/parking', parking);
 app.use('/users/selectParking', selectParking);
 app.use('/users/registerCar', registerCar);
 app.use('/users/assignCarToSpace', assignCarToSpace);
+app.use('/users/viewCars', viewCars);
 
 //DB test
 db.sequelize.authenticate()
