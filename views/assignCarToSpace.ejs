@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard</title>
+    <title>Assign car to space</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -36,16 +36,35 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="col-sm-11 col-md-9 col-lg-7 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/selectParking" role="button">Select parking</a>
-						<hr class="my-4">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/registerCar" role="button">Register car</a>
-						<hr class="my-4">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/assignCarToSpace" role="button">Assing car to space</a>
-						<hr class="my-4">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/viewCars" role="button">View cars</a>
+						<form action="/users/assignCarToSpace" method="POST">
+							<div class="row">
+								<div class="col-sm">
+									<select name='_selectedCar' class="custom-select">
+										<option selected>Select car</option>
+										<% cars.forEach(element => {%>
+											<option value="<%= element.id %>"> <%= element.brand %> <%= element.model %></option>
+										<% }) %>
+									</select>
+								</div>
+								<div class="col-sm">
+									<select name='_selectedParkingSpace' class="custom-select">
+										<option selected>Select parking space</option>
+										<% parkingspaces.forEach(element => {%>
+											<option value="<%= element.id %>"> <%= element.spaceNumber %></option>
+										<% }) %>
+									</select>
+								</div>
+							</div>
+							<hr class="my-4">
+							<input 
+								class="btn btn-lg btn-primary btn-block text-uppercase"
+								type="submit" 
+								value="Assign" 
+							/>
+						</form>
 					</div>
 				</div>
 			</div>

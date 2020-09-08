@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Dashboard</title>
+    <title>Register car</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -39,13 +39,49 @@
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/selectParking" role="button">Select parking</a>
-						<hr class="my-4">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/registerCar" role="button">Register car</a>
-						<hr class="my-4">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/assignCarToSpace" role="button">Assing car to space</a>
-						<hr class="my-4">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/viewCars" role="button">View cars</a>
+						<form action="/users/registerCar" method="POST">
+							<div class="form-label-group">
+								<input
+									type="text"
+									id="carBrand"
+									name="_carBrand"
+									placeholder="Car brand"
+									class="form-control"
+									required
+									autofocus
+								/>
+							</div>
+							<div class="form-label-group">
+								<input
+									type="text"
+									id="carModel"
+									name="_carModel"
+									placeholder="Car model"
+									class="form-control"
+									required
+									autofocus
+								/>
+							</div>
+							<div class="form-label-group">
+								<input
+									type="text"
+									id="carLicensePlate"
+									name="_carLicensePlate"
+									placeholder="Licanse Plate"
+									class="form-control"
+									required
+									autofocus
+								/>
+							</div>
+							<hr class="my-4">
+							<div>
+								<input 
+									class="btn btn-lg btn-primary btn-block text-uppercase"
+									type="submit" 
+									value="Register car"
+								/>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

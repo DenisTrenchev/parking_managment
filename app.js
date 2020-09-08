@@ -20,6 +20,9 @@ const dashboard = require('./controllers/dashboard');
 const dashboardPO = require('./controllers/dashboardPO');
 const viewParking = require('./controllers/viewParking');
 const parking = require('./controllers/parking');
+const selectParking = require('./controllers/selectParking');
+const registerCar = require('./controllers/registerCar');
+const assignCarToSpace = require('./controllers/assignCarToSpace');
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
 
@@ -47,8 +50,11 @@ app.use('/users/register', register);
 app.use('/users/registerPO', registerPO);
 app.use('/users/dashboard', dashboard);
 app.use('/users/dashboardPO', dashboardPO);
-app.use('/users/viewPArking', viewParking);
+app.use('/users/viewParking', viewParking);
 app.use('/users/parking', parking);
+app.use('/users/selectParking', selectParking);
+app.use('/users/registerCar', registerCar);
+app.use('/users/assignCarToSpace', assignCarToSpace);
 
 //DB test
 db.sequelize.authenticate()

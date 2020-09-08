@@ -26,6 +26,11 @@ module.exports = (sequelize, DataTypes) =>{
 				allowNull: false
 			}
 		});
+		Parking_Space.belongsTo(models.Car, {
+			foreignKey:{
+				name: 'carID'
+			}
+		});
 	}
 	return Parking_Space;
 }

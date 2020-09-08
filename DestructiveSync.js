@@ -1,16 +1,6 @@
 const db = require('./models');
 
-// db.sequelize.sync({force: true}).then(() => {
-// 	//require('./models/users').sync({force: true});
-// 	// require('./models/users').build({
-// 	// 	firstName: "Pesho", 
-// 	// 	lastName: "Peshov", 
-// 	// 	birthDate: "1996-01-05",
-// 	// 	email: "pesho@abv.bg",
-// 	// 	password: "asd",
-// 	// 	role: "1"
-// 	// }).save();
-// }).catch();
+//db.sequelize.sync({force: true}).then().catch();
 
 //Insert parking
 // db.Parking.build({
@@ -31,30 +21,30 @@ async function test(){
 //test();
 
 //Insert parking space types
-// db.Parking_Space_Type.bulkCreate([
-// 	{
-// 		name: 'Car'
-// 	},
-// 	{
-// 		name: 'Bus'
-// 	},
-// 	{
-// 		name: 'Motorcycle'
-// 	}
-// ]);
+db.Parking_Space_Type.bulkCreate([
+	{
+		name: 'Car'
+	},
+	{
+		name: 'Bus'
+	},
+	{
+		name: 'Motorcycle'
+	}
+]);
 
 //Insert user roles
-// db.User_Role.bulkCreate([
-// 	{
-// 		name: 'user'
-// 	},
-// 	{
-// 		name: 'parking-owner'
-// 	},
-// 	{
-// 		name: 'admin'
-// 	}
-// ]);
+db.User_Role.bulkCreate([
+	{
+		name: 'user'
+	},
+	{
+		name: 'parking-owner'
+	},
+	{
+		name: 'admin'
+	}
+]);
 
 async function test2(){
 	// let parking = await db.Parking.findOne({where: {name: 'parking3'}});

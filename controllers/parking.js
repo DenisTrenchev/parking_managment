@@ -9,17 +9,19 @@ router.get('/', /*helpers.checkNotAuthenticated,*/ async (req, res) =>{
 
 	res.render('parking',{
 		parking_spaces
-	})
+	});
 });
 
 router.post('/', async (req, res) =>{
 	let {parking_spaces} = req.body;
-	console.log(parking_spaces);
+	//console.log(parking_spaces);
 
 	await db.Parking_Space.update(
 		{userID: req.user.id}, 
 		{where: {id: parking_spaces}}
 	);
+
+	res.redirect('dashboard');
 });
 
 module.exports = router;
