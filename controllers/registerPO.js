@@ -13,13 +13,6 @@ router.post('/', async (req, res) => {
 	let {_firstName, _email, _password, _password2} = req.body;
 	let errors = [];
 
-	// console.log({
-	// 	_firstName,
-	// 	_email,
-	// 	_password,
-	// 	_password2
-	// });
-
 	if(!_firstName || !_email || !_password || !_password2){
 		errors.push({message: "Please enter all fields!"});
 	}
@@ -36,7 +29,6 @@ router.post('/', async (req, res) => {
 		res.render("registerPO", {errors, _birthDate, _email, _password, _password2});
 	}else{
 		hashedPassword = await bcrypt.hash(_password, 10);
-		//console.log(hashedPassword);
 
 		if(await db.User.findOne({attributes: ['email'], where: {email: _email}})){
 			errors.push({message: "Email already registered"});

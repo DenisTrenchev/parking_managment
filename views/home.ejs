@@ -48,18 +48,27 @@
 			</ul>
 			</div>
 	</nav>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-				<% if (typeof message !== 'undefined' ) { %>
-					<div class="card card-signin my-5">
-						<div class="card-body">
-							<p class="text-center"><%= message %></p>
+	<main role="main" class="container">
+		<h1 class="text-center text-uppercase font-weight-bold home-title">Parking management</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+					<% if (typeof message !== 'undefined' ) { %>
+						<div class="card card-signin my-5">
+							<div class="card-body">
+								<p class="text-center"><%= message %></p>
+							</div>
 						</div>
-					</div>
-				<% } %>
+					<% } %>
+				</div>
 			</div>
 		</div>
-	</div>
+	</main>
+	
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted">Graduation project Made by: Denis Trenchev</span>
+		</div>
+	</footer>
 </body>
 </html>

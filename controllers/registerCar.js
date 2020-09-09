@@ -12,8 +12,8 @@ router.post('/', async (req, res) => {
 	let {_carBrand, _carModel, _carLicensePlate} = req.body;
 	let errors = [];
 
-	console.log({_carBrand, _carModel, _carLicensePlate});
-	console.log(req.user.id)
+	// console.log({_carBrand, _carModel, _carLicensePlate});
+	// console.log(req.user.id)
 
 	if(await db.Car.findOne({where: {licensePlate: _carLicensePlate}})){
 		errors.push({message: "Email already registered"});

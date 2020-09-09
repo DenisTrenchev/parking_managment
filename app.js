@@ -4,9 +4,7 @@ const PORT = process.env.PORT || 80;
 const session = require("express-session");
 const flash = require("express-flash");
 
-//const path = require('path');
 const passport = require("passport");
-//const FileStore = require("session-file-store")(session);
 
 const db = require('./models');
 const initializePassport = require('./config/passport');
@@ -29,7 +27,6 @@ const addParking = require('./controllers/addParking');
 app.set('view engine', 'ejs');
 
 app.use(session({
-	//store: new FileStore(),
 	secret: "secret",
 	resave: false,
 	saveUninitialized: true
