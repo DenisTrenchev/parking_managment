@@ -24,6 +24,7 @@ const selectParking = require('./controllers/selectParking');
 const registerCar = require('./controllers/registerCar');
 const assignCarToSpace = require('./controllers/assignCarToSpace');
 const viewCars = require('./controllers/viewCars'); 
+const addParking = require('./controllers/addParking');
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
 
@@ -57,6 +58,7 @@ app.use('/users/selectParking', selectParking);
 app.use('/users/registerCar', registerCar);
 app.use('/users/assignCarToSpace', assignCarToSpace);
 app.use('/users/viewCars', viewCars);
+app.use('/users/addParking', addParking);
 
 //DB test
 db.sequelize.authenticate()
@@ -64,5 +66,3 @@ db.sequelize.authenticate()
 	.catch(err => console.log('Error: ' + err))
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
-

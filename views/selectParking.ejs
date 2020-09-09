@@ -40,12 +40,27 @@
 				<div class="card card-signin my-5">
 					<div class="card-body">
 						<form action="/users/parking" method="GET">
-							<select name='_selectedParking' class="custom-select">
+							<!-- <select name='_selectedParking' class="custom-select">
 								<option selected>Select parking</option>
 								<% parkings.forEach(element => {%>
 									<option value="<%= element.id %>"> <%= element.name %></option>
 								<% }) %>
-							</select>
+							</select> -->
+							<% parkings.forEach(element => {%>
+								<div class="alert alert-info" role="alert">
+									<strong>Parking: </strong>
+									<label><%= element.name %></label>
+									<div class="form-check form-check-inline">
+										<input 
+											class="form-check-input pull-right" 
+											type="radio" 
+											id="inlineRadio1" 
+											value="<%= element.id %>" 
+											id="defaultCheck1"
+											name="_selectedParking">
+									</div>
+								</div>
+							<% }) %>
 							<hr class="my-4">
 							<input 
 								class="btn btn-lg btn-primary btn-block text-uppercase"

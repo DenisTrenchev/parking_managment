@@ -1,65 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>DashboardPO</title>
+    <link rel="stylesheet" href="../public/css/style.css" type="text/css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard</title>
 </head>
 <body>
-	<h1>DashboardPO</h1>
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+		<a class="navbar-brand text-light" href="/">Home</a>
+		<button 
+			class="navbar-toggler bg-light" 
+			type="button" 
+			data-toggle="collapse" 
+			data-target="#navbarSupportedContent" 
+			aria-controls="navbarSupportedContent" 
+			aria-expanded="false" 
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link text-light" href="/users/logout">Log out</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 	
-	<ul>
-		<% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
-		<li><%= error.message %></li>
-		<% }) %> <% } %>
-	</ul>
-	
-	<ul>
-		<% if(messages.success_msg) { %>
-		<li><%= messages.success_msg %></li>
-		<% } %>
-	</ul>
-
-	<ul>
-		<% if (messages.error) { %>
-		<li><%= messages.error %></li>
-		<% } %>
-	</ul>
-	<a href="/users/logout">Logout</a>
-	<form action="/users/dashboardPO" method="POST">
-		<div>
-			<input
-				type="text"
-				id="parkingName"
-				name="_parkingName"
-				placeholder="Parking name"
-			/>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+				<div class="card card-signin my-5">
+					<div class="card-body">
+						<a class="btn btn-primary btn-lg btn-block" href="/users/addParking" role="button">Create parking</a>
+						<!-- <hr class="my-4">
+						<a class="btn btn-primary btn-lg btn-block" href="/users/viewParking" role="button">View parking</a> -->
+					</div>
+				</div>
+			</div>
 		</div>
-		<div>
-			<input
-				type="text"
-				id="parkingAddress"
-				name="_parkingAddress"
-				placeholder="Parking address"
-			/>
-		</div>
-		<div>
-			<input
-				type="text"
-				id="parkingSpaceCount"
-				name="_parkingSpaceCount"
-				placeholder="Spaces count"
-			/>
-		</div>
-		<div>
-			<input 
-				type="submit" 
-				value="Create" 
-			/>
-		</div>
-	</form>
+	</div>
 </body>
 </html>
