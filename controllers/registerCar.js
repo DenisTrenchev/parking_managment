@@ -8,26 +8,51 @@ router.get('/', /*helpers.checkAuthenticated,*/ (req, res) =>{
 	res.render('registerCar');
 });
 
-router.post('/', async (req, res) => {
-	let {_carBrand, _carModel, _carLicensePlate} = req.body;
+async function validateAndCreateCar(carBrand, carModel, carLicensePlate, userID){
 	let errors = [];
 
-	// console.log({_carBrand, _carModel, _carLicensePlate});
-	// console.log(req.user.id)
-
-	if(await db.Car.findOne({where: {licensePlate: _carLicensePlate}})){
-		errors.push({message: "Email already registered"});
-			res.render('register', {errors});
+	if(await db.Car.findOne({where: {licensePlate: carLicensePlate}})){
+		errors.push({message: "Car already exists"});
+			return {
+				isValid: false,
+				errors: errors,
+				carBrand: carBrand,
+				carModel: carModel,
+				carLicensePlate: carLicensePlate
+			}
 	}else{
 		await db.Car.build({
-			brand: _carBrand,
-			model: _carModel,
-			licensePlate: _carLicensePlate,
-			userID: req.user.id
+			brand: carBrand,
+			model: carModel,
+			licensePlate: carLicensePlate,
+			userID: userID
 		}).save();
+
+		return {
+			isValid: true
+		};
+	}
+}
+
+router.post('/', async (req, res) => {
+	let {_carBrand, _carModel, _carLicensePlate} = req.body;
+
+	var result = await validateAndCreateCar(_carBrand, _carModel, _carLicensePlate, req.user.id);
+
+	if(result.isValid == false){
+		res.render('registerCar', {
+			errors: result.errors,
+			_carBrand: result.carBrand,
+			_carModel: result.carModel,
+			_carLicensePlate: result.carLicensePlate
+		});
+	}else{
+		res.redirect("/users/dashboard");
 	}
 
-	res.redirect("/users/dashboard")
 });
 
-module.exports = router;
+module.exports = {
+	registerCar: router,
+	registerCarFunc: validateAndCreateCar
+};

@@ -12,17 +12,17 @@ const initializePassport = require('./config/passport');
 const home = require('./controllers/home');
 const login = require('./controllers/login');
 const logout = require('./controllers/logout');
-const register = require('./controllers/register');
+const {register, registerFunc} = require('./controllers/register');
 const registerPO = require('./controllers/registerPO');
 const dashboard = require('./controllers/dashboard');
 const dashboardPO = require('./controllers/dashboardPO');
 const viewParking = require('./controllers/viewParking');
 const parking = require('./controllers/parking');
 const selectParking = require('./controllers/selectParking');
-const registerCar = require('./controllers/registerCar');
+const {registerCar, registerCarFunc} = require('./controllers/registerCar');
 const assignCarToSpace = require('./controllers/assignCarToSpace');
 const viewCars = require('./controllers/viewCars'); 
-const addParking = require('./controllers/addParking');
+const {addParking, addParkingFunc} = require('./controllers/addParking');
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
 
