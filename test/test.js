@@ -55,12 +55,12 @@ describe('App', function(){
         });
     });
 //-------------------------------------------------------------------------------------------------
-    it('Failed adding parking', async function(){
+    it('Failed adding parking and parking spaces', async function(){
         var res = await addParkingFunc('p1', 'a1', 1);
         assert.equal(res.isValid, false);
     });
 
-    it('Successfuly added parking', async function(){
+    it('Successfuly added parking and parking spaces', async function(){
         var res = await addParkingFunc('p4', 'a4', 3);
         assert.equal(res.isValid, true);
         await db.Parking_Space.destroy({
