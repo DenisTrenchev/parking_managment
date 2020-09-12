@@ -58,7 +58,7 @@ app.use('/users/viewCars', viewCars);
 app.use('/users/addParking', addParking);
 
 //DB test
-db.sequelize.authenticate()
+db.sequelize.sync()
 	.then(() => console.log('Database connected...'))
 	.catch(err => console.log('Error: ' + err))
 
