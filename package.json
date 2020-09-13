@@ -2,9 +2,9 @@
 	"name": "parking_software",
 	"version": "1.0.0",
 	"description": "graduation project",
-	"main": "index.js",
+	"main": "app.js",
 	"scripts": {
-		"start": "node index",
+		"start": "node app",
 		"dev": "nodemon index --ignore sessions/",
 		"test": "nyc mocha || true"
 	},
