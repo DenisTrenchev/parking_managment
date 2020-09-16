@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Parking</title>
+    <title>Dashboard</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
@@ -33,29 +33,41 @@
 			</ul>
 		</div>
 	</nav>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						<h5 class="card-title text-center font-weight-bold text-uppercase">Parking: <%= parking_name.name %></h5>
-						<h5 class="card-title text-center font-weight-bold text-uppercase">Address: <%= parking_name.address %></h5>
-						<% parking_spaces.forEach(element => { %>
-							<% if(element.userID) {%>
-								<div class="alert alert-danger" role="alert">
-									<p><strong>Number: </strong> <%= element.spaceNumber %></p>
+						<form action="/users/dashboardAdmin" method="GET">
+							<h5 class="card-title text-center">Users</h5>
+							<% users.forEach(element => { %>
+								<div class="alert alert-info" role="alert">
+									<strong>Name: </strong><label><%= element.firstName %> <%= element.lastName %></label> 
+									<div class="form-check form-check-inline float-right">
+										<input 
+											class="form-check-input" 
+											type="radio" 
+											id="inlineRadio1" 
+											value="<%= element.id %>" 
+											id="defaultCheck1"
+											name="_selectedUser"
+										>
+									</div>
 								</div>
-							<% } else {%>
-								<div class="alert alert-success" role="alert">
-									<p><strong>Number: </strong> <%= element.spaceNumber %></p>									
-								</div>
-							<% } %>
-						<% }) %>
+								
+							<% }) %>
+
+							<input 
+								class="btn btn-lg btn-primary btn-block text-uppercase"
+								type="submit" 
+								value="Select" 
+							/>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-    
 </body>
 </html>

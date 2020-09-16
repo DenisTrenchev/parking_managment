@@ -5,7 +5,15 @@ const { Connection } = require('pg');
 const helpers = require('../helpers/util');
 
 router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
-	parkings = await db.Parking_Space.findAll({
+	parking_name = await db.Parking.findOne({
+		where: {
+			id: req.query._selectedParking
+		}
+	});
+	parking_spaces = await db.Parking_Space.findAll({
+		where:{
+			parkingID: req.query._selectedParking
+		},
 		include: [{
 			model: db.Parking,
 			attributes: ['name', 'address'],
@@ -14,7 +22,8 @@ router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 	});
 	//res.send(parkings);
 	res.render('viewParking', {
-		parkings: parkings
+		parking_spaces: parking_spaces,
+		parking_name: parking_name
 	});
 });
 

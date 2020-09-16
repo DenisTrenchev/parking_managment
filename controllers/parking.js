@@ -14,7 +14,6 @@ router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 
 router.post('/', async (req, res) =>{
 	let {parking_spaces} = req.body;
-	//console.log(parking_spaces);
 
 	await db.Parking_Space.update(
 		{userID: req.user.id}, 

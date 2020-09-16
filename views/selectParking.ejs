@@ -41,24 +41,19 @@
 					<div class="card-body">
 						<h5 class="card-title text-center">Select parking</h5>
 						<form action="/users/parking" method="GET">
-							<!-- <select name='_selectedParking' class="custom-select">
-								<option selected>Select parking</option>
-								<% parkings.forEach(element => {%>
-									<option value="<%= element.id %>"> <%= element.name %></option>
-								<% }) %>
-							</select> -->
 							<% parkings.forEach(element => {%>
 								<div class="alert alert-info" role="alert">
 									<strong>Parking: </strong>
 									<label><%= element.name %></label>
-									<div class="form-check form-check-inline">
+									<div class="form-check form-check-inline float-right">
 										<input 
 											class="form-check-input pull-right" 
 											type="radio" 
 											id="inlineRadio1" 
 											value="<%= element.id %>" 
 											id="defaultCheck1"
-											name="_selectedParking">
+											name="_selectedParking"
+										>
 									</div>
 								</div>
 							<% }) %>

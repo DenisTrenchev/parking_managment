@@ -34,9 +34,9 @@ router.post('/',
 				if(user.userRole == 2){
 					res.redirect("/users/dashboardPO");
 				}
-				// if(user.userRole == 3){
-				// 	res.redirect("/users/adminPage");
-				// }
+				if(user.userRole == 3){
+					res.redirect("/users/dashboardAdmin");
+				}
 			})
 		}
 	})(req, res);

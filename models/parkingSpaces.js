@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) =>{
 	Parking_Space.associate = models => {
 		Parking_Space.belongsTo(models.Parking_Space_Type, {
 			foreignKey:{
-				name: 'parkingSpaceTypeID',
-				//allowNull: false
+				name: 'parkingSpaceTypeID'
 			}
 		});
 		Parking_Space.belongsTo(models.User, {
