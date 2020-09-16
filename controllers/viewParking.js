@@ -12,6 +12,7 @@ router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 			where: {userID: req.user.id}
 		}]
 	});
+	//res.send(parkings);
 	res.render('viewParking', {
 		parkings: parkings
 	});

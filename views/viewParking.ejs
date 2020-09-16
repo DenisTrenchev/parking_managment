@@ -39,11 +39,19 @@
 				<div class="card card-signin my-5">
 					<div class="card-body">
 						<% parkings.forEach(element => { %>
-							<div class="alert alert-info" role="alert">
-								<p><strong>Parking: </strong> <%= element.Parking.name %></p>
-								<p><strong>Parking address: </strong> <%= element.Parking.address %></p>
-								<p><strong>Space number: </strong> <%= element.spaceNumber %></p>
-							</div>
+							<% if(element.userID != null) {%>
+								<div class="alert alert-danger" role="alert">
+									<p><strong>Parking: </strong> <%= element.Parking.name %></p>
+									<p><strong>Parking address: </strong> <%= element.Parking.address %></p>
+									<p><strong>Space number: </strong> <%= element.spaceNumber %></p>
+								</div>
+							<% } else {%>
+								<div class="alert alert-success" role="alert">
+									<p><strong>Parking: </strong> <%= element.Parking.name %></p>
+									<p><strong>Parking address: </strong> <%= element.Parking.address %></p>
+									<p><strong>Space number: </strong> <%= element.spaceNumber %></p>									
+								</div>
+							<% } %>
 							<hr class="my-4">
 						<% }) %>
 					</div>
