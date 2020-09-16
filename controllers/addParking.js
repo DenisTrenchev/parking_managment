@@ -8,7 +8,7 @@ router.get('/', helpers.checkNotAuthenticated, (req, res) =>{
 	res.render('addParking');
 });
 
-async function validateAndCreateParking(parkingName, parkingAddress, parkingSpaceCount){
+async function validateAndCreateParking(parkingName, parkingAddress, parkingSpaceCount, userID){
 	let errors = [];
 
 	if(await db.Parking.findOne({where: {name: parkingName}})){
@@ -23,7 +23,8 @@ async function validateAndCreateParking(parkingName, parkingAddress, parkingSpac
 	}else{
 		await db.Parking.build({
 			name: parkingName,
-			address: parkingAddress
+			address: parkingAddress,
+			userID: userID
 		}).save();
 
 		var parking = await db.Parking.findOne({where: {name: parkingName}});
@@ -45,7 +46,7 @@ async function validateAndCreateParking(parkingName, parkingAddress, parkingSpac
 router.post('/', async (req, res) => {
 	let {_parkingName, _parkingAddress, _parkingSpaceCount} = req.body;
 	
-	var result = await validateAndCreateParking(_parkingName, _parkingAddress, _parkingSpaceCount);
+	var result = await validateAndCreateParking(_parkingName, _parkingAddress, _parkingSpaceCount, req.user.id);
 
 	if(result.isValid = false){
 		res.render('addParking', {
