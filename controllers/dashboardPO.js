@@ -4,7 +4,7 @@ const router = express.Router();
 const { Connection } = require('pg');
 const helpers = require('../helpers/util');
 
-router.get('/', /*helpers.checkNotAuthenticated,*/ async (req, res) =>{
+router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 	res.render('dashboardPO');
 });
 

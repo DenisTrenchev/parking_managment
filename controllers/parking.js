@@ -4,7 +4,7 @@ const router = express.Router();
 const { Connection } = require('pg');
 const helpers = require('../helpers/util');
 
-router.get('/', /*helpers.checkNotAuthenticated,*/ async (req, res) =>{
+router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 	parking_spaces = await db.Parking_Space.findAll({where: {parkingID: req.query._selectedParking, userID: null}});
 
 	res.render('parking',{

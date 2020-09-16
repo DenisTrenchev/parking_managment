@@ -4,7 +4,7 @@ const router = express.Router();
 const { Connection } = require('pg');
 const helpers = require('../helpers/util');
 
-router.get('/', /*helpers.checkAuthenticated,*/ (req, res) =>{
+router.get('/', helpers.checkNotAuthenticated, (req, res) =>{
 	res.render('registerCar');
 });
 
