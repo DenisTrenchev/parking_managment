@@ -39,10 +39,30 @@
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						<h5 class="card-title text-center">Dashboard</h5>
-						<a class="btn btn-primary btn-lg btn-block" href="/users/selectUser" role="button">Change user role</a>
-						<hr class="my-4">
-						<a class="btn btn-primary btn-lg btn-block" href="/users/deleteUser" role="button">Delete user</a>
+						<form action="/users/changeUserRole" method="POST">
+							<h5 class="card-title text-center">Change role</h5>
+								<div class="alert alert-info" role="alert">
+									<div>
+										<strong>Name: </strong><label><%= selectedUser.firstName %></label>
+									</div>
+									<div>
+										<strong>Select role: </strong>
+										<select class="selectpicker" id="exampleFormControlSelect1" name="_role" id="roles">
+											<option selected disabled></option>
+											<option value="1">User</option>
+											<option value="2">Parking owner</option>
+											<option value="3">Admin</option>
+										</select>
+									</div>
+									
+								</div>
+								
+							<input 
+								class="btn btn-lg btn-primary btn-block text-uppercase"
+								type="submit" 
+								value="Select" 
+							/>
+						</form>
 					</div>
 				</div>
 			</div>

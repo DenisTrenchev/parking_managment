@@ -20,10 +20,29 @@ router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 			where: {userID: req.user.id}
 		}]
 	});
-	//res.send(parkings);
+
+	let occupiedSpaces = 0;
+	let freeSpaces = 0;
+	let allSpaces = 0;
+	let occupiedSpacesPercent = 0;
+
+	parking_spaces.forEach(element => {
+		allSpaces++;
+		if(element.userID){
+			occupiedSpaces++;
+		}else{
+			freeSpaces++;
+		}
+	});
+	
+	occupiedSpacesPercent = ((occupiedSpaces * 100)/allSpaces).toFixed(2);
+	
 	res.render('viewParking', {
 		parking_spaces: parking_spaces,
-		parking_name: parking_name
+		parking_name: parking_name,
+		occupiedSpaces: occupiedSpaces,
+		freeSpaces: freeSpaces,
+		occupiedSpacesPercent: occupiedSpacesPercent
 	});
 });
 

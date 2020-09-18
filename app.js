@@ -25,6 +25,8 @@ const {registerCar, registerCarFunc} = require('./controllers/registerCar');
 const assignCarToSpace = require('./controllers/assignCarToSpace');
 const viewCars = require('./controllers/viewCars'); 
 const {addParking, addParkingFunc} = require('./controllers/addParking');
+const changeUserRole = require('./controllers/changeUserRole');
+const selectUser = require('./controllers/selectUser');
 //------------------------------------------------------------------------------
 app.set('view engine', 'ejs');
 
@@ -60,9 +62,11 @@ app.use('/users/registerCar', registerCar);
 app.use('/users/assignCarToSpace', assignCarToSpace);
 app.use('/users/viewCars', viewCars);
 app.use('/users/addParking', addParking);
+app.use('/users/changeUserRole', changeUserRole);
+app.use('/users/selectUser', selectUser);
 
 //DB test
-db.sequelize.sync()
+db.sequelize.authenticate()
 	.then(() => console.log('Database connected...'))
 	.catch(err => console.log('Error: ' + err))
 
