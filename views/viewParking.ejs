@@ -35,7 +35,7 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="col-sm-9 col-md-7 col-lg-9 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
 						<h5 class="card-title text-center font-weight-bold text-uppercase">Parking: <%= parking_name.name %></h5>
@@ -48,19 +48,26 @@
 							<% if(element.userID) {%>
 								<% if(element.Car) {%>
 									<div class="alert alert-danger" role="alert">
+										<p class="text-center"><strong class="info-title">Parking space info</strong></p>
 										<p><strong>Number: </strong> <%= element.spaceNumber %></p>
 										<hr class="my-4">
-										<p><strong>Car brand: </strong> <%= element.Car.brand %></p>
-										<p><strong>Car model: </strong> <%= element.Car.model %></p>
-										<p><strong>Car license plate: </strong> <%= element.Car.licensePlate %></p>
+										<p class="text-center"><strong class="info-title">Car info</strong></p>
+										<p><strong>License plate: </strong> <%= element.Car.licensePlate %></p>
+										<p><strong>Brand: </strong> <%= element.Car.brand %></p>
+										<p><strong>Model: </strong> <%= element.Car.model %></p>
+										<hr class="my-4">
+										<p class="text-center"><strong class="info-title">Client info</strong></p>
+										<p><strong>Name: </strong> <%= element.Car.User.firstName %> <%= element.Car.User.lastName %></p>
 									</div>
 								<% } else { %>
 									<div class="alert alert-danger" role="alert">
+										<p class="text-center"><strong class="info-title">Parking space info</strong></p>
 										<p><strong>Number: </strong> <%= element.spaceNumber %></p>
 									</div>
 								<% } %>
 							<% } else {%>
 								<div class="alert alert-success" role="alert">
+									<p class="text-center"><strong class="info-title">Parking space info</strong></p>
 									<p><strong>Number: </strong> <%= element.spaceNumber %></p>									
 								</div>
 							<% } %>

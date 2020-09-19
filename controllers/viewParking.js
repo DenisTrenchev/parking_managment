@@ -14,13 +14,16 @@ router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 		where:{
 			parkingID: req.query._selectedParking
 		},
+		// include: [{
+		// 	model: db.Parking,
+		// 	attributes: ['name', 'address'],
+		// 	where: {userID: req.user.id}
+		// }],
 		include: [{
-			model: db.Parking,
-			attributes: ['name', 'address'],
-			where: {userID: req.user.id}
-		}],
-		include: [{
-			model: db.Car
+			model: db.Car,
+			include: [{
+				model: db.User
+			}]
 		}]
 	});
 
