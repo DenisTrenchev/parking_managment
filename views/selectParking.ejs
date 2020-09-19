@@ -43,8 +43,9 @@
 						<form action="/users/parking" method="GET">
 							<% parkings.forEach(element => {%>
 								<div class="alert alert-info" role="alert">
-									<strong>Parking: </strong>
-									<label><%= element.name %></label>
+									<strong>Parking: </strong><label><%= element.name %></label>
+									<br/>
+									<strong>Address: </strong><label><%= element.address %></label>
 									<div class="form-check form-check-inline float-right">
 										<input 
 											class="form-check-input pull-right" 

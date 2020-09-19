@@ -18,6 +18,9 @@ router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 			model: db.Parking,
 			attributes: ['name', 'address'],
 			where: {userID: req.user.id}
+		}],
+		include: [{
+			model: db.Car
 		}]
 	});
 
@@ -36,7 +39,7 @@ router.get('/', helpers.checkNotAuthenticated, async (req, res) =>{
 	});
 	
 	occupiedSpacesPercent = ((occupiedSpaces * 100)/allSpaces).toFixed(2);
-	
+	//res.send(parking_spaces);
 	res.render('viewParking', {
 		parking_spaces: parking_spaces,
 		parking_name: parking_name,

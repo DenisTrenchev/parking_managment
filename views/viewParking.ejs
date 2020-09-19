@@ -46,9 +46,19 @@
 						<hr class="my-4">
 						<% parking_spaces.forEach(element => { %>
 							<% if(element.userID) {%>
-								<div class="alert alert-danger" role="alert">
-									<p><strong>Number: </strong> <%= element.spaceNumber %></p>
-								</div>
+								<% if(element.Car) {%>
+									<div class="alert alert-danger" role="alert">
+										<p><strong>Number: </strong> <%= element.spaceNumber %></p>
+										<hr class="my-4">
+										<p><strong>Car brand: </strong> <%= element.Car.brand %></p>
+										<p><strong>Car model: </strong> <%= element.Car.model %></p>
+										<p><strong>Car license plate: </strong> <%= element.Car.licensePlate %></p>
+									</div>
+								<% } else { %>
+									<div class="alert alert-danger" role="alert">
+										<p><strong>Number: </strong> <%= element.spaceNumber %></p>
+									</div>
+								<% } %>
 							<% } else {%>
 								<div class="alert alert-success" role="alert">
 									<p><strong>Number: </strong> <%= element.spaceNumber %></p>									
