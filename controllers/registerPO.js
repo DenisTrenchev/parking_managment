@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 	}
 
 	if(errors.length > 0){
-		res.render("registerPO", {errors, _birthDate, _email, _password, _password2});
+		res.render("registerPO", {errors, _email, _password, _password2});
 	}else{
 		hashedPassword = await bcrypt.hash(_password, 10);
 
