@@ -3,5 +3,5 @@ Bachelor's degree graduation project
 
 
 To initialize the database, you should run: 
-mode DestructiveSync.js
+node DestructiveSync.js
 node DBInit.js
